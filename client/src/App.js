@@ -1,15 +1,3 @@
-// import Signup from "./components/Signup";
-// import { Route, Routes, Navigate } from "react-router-dom";
-
-// function App() {
-//   return (
-//     <Routes>
-//       <Route path="/Signup" exact element={<Signup />} />
-//     </Routes>
-//   );
-// }
-
-// export default App;
 
 
 import { Route, Routes, Navigate } from "react-router-dom";
