@@ -1,5 +1,5 @@
 const path = require('path')
-const dotenv=require('dotenv').config({ path: path.resolve(__dirname, '../server/.env') })
+require('dotenv').config({ path: path.resolve(__dirname, '../server/.env') })
 
 // const dotenv=require('dotenv').config();
 const express=require('express');
@@ -13,11 +13,11 @@ connection();
 const app=express();
 
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 app.use('/api/users',userRoutes);
 app.use('/api/auth',authRoutes);
 
-const port=process.env.PORT || 3001;
+const port=process.env.PORT || 3030;
 
 app.listen(port,()=>{
     console.log(`Listening in the port ${port}`)

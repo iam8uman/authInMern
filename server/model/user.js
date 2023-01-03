@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 
+
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -10,12 +12,17 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
+
+
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign({ _id: this.id }, process.env.JWTPRIVIATEKEY, {
     expiresIn: "7d",
   });
   return token;
 };
+
+
+const User=mongoose.model("user", userSchema);
 
 const validate = (data) => {
   const schema = Joi.object({
@@ -26,5 +33,5 @@ const validate = (data) => {
   });
   return schema.validate(data);
 };
-module.exports= { userSchema, validate }; //file export gareko jsto vayo!!
+module.exports= { User, validate }; //file export gareko jsto vayo!!
 
